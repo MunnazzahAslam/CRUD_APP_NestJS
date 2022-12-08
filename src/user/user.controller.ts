@@ -8,7 +8,6 @@ import { User } from "@prisma/client";
 @UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UserController{
-    constructor(){}
 
     @ApiBearerAuth('JWT')
     @ApiCreatedResponse()
