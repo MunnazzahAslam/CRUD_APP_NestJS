@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Bookmark } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { BookmarkDto } from './dto';
 
 @Injectable()
 export class BookmarkService {
   constructor(private prisma: PrismaService){}
-  async create(createBookmarkDto: Bookmark) {
+  async create(createBookmarkDto: BookmarkDto) {
     const bookmark = await this.prisma.bookmark.create({
       data: {
           title: createBookmarkDto.title,
@@ -33,7 +34,7 @@ export class BookmarkService {
   return bookmark;
   }
 
-  async update(id: number, updateBookmarkDto: Bookmark) {
+  async update(id: number, updateBookmarkDto: BookmarkDto) {
     const bookmark = await this.prisma.bookmark.update({
       where: {
         id: id,

@@ -1,9 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsNotEmpty, IsString } from "class-validator"
+import { IsNotEmpty, IsNumber, IsString } from "class-validator"
 
 export class BookmarkDto {
     @ApiProperty()
-    @IsEmail()
+    @IsString()
     @IsNotEmpty()
     title: string;
     
@@ -13,4 +13,9 @@ export class BookmarkDto {
     @ApiProperty()
     @IsNotEmpty()
     link: string;
+
+    @ApiProperty()
+    @IsNotEmpty()
+    @IsNumber()
+    userId: number;
 }

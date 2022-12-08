@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ApiTags } from '@nestjs/swagger';
 import { Bookmark } from '@prisma/client';
 import { BookmarkService } from './bookmark.service';
+import { BookmarkDto } from './dto';
 
 @ApiTags('Bookmark')
 @Controller('bookmarks')
@@ -9,7 +10,7 @@ export class BookmarkController {
   constructor(private readonly bookmarkService: BookmarkService) {}
 
   @Post()
-  create(@Body() createBookmarkDto: Bookmark) {
+  create(@Body() createBookmarkDto: BookmarkDto) {
     return this.bookmarkService.create(createBookmarkDto);
   }
 
@@ -24,7 +25,7 @@ export class BookmarkController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBookmarkDto: Bookmark) {
+  update(@Param('id') id: string, @Body() updateBookmarkDto: BookmarkDto) {
     return this.bookmarkService.update(+id, updateBookmarkDto);
   }
 
